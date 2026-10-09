@@ -1,8 +1,19 @@
 def calcular_ir(renda_mensal):
-    if  renda_mensal <= 5000:
+
+    faixa = None
+    desconto = 0
+    aliquota = 0
+    ir = 0
+    status = "Válido"
+    
+    if renda_mensal < 0:
+        status = "Inválido"
+        pass
+        
+    elif  renda_mensal <= 5000:
         faixa = "Até R$ 5.000"
         desconto = 100
-        aliquota = 0.275
+        aliquota = 0
         ir = 0
 
     elif renda_mensal <= 5500:
@@ -39,9 +50,7 @@ def calcular_ir(renda_mensal):
 
     else:
         faixa = "Acima de R$ 7.350"
-        desconto = 0
         aliquota = 0.275
-
         ir = renda_mensal * aliquota
 
     return {
@@ -49,11 +58,8 @@ def calcular_ir(renda_mensal):
         "faixa": faixa,
         "desconto": desconto,
         "aliquota": aliquota,
-        "ir_mensal": ir
+        "ir_mensal": ir,
+        "status": status
     }
 
-try: 
-    print(calcular_ir(-12))
-except ValueError:
-    print("O valor inserido é inválido.")
-
+print(calcular_ir(float(input("Digite a renda mensal: "))))
