@@ -1,16 +1,22 @@
 def calcular_ir(renda_mensal):
-
     faixa = None
     desconto = 0
     aliquota = 0
     ir = 0
     status = "Válido"
-    
+
     if renda_mensal < 0:
         status = "Inválido"
-        pass
-        
-    elif  renda_mensal <= 5000:
+        return {
+            "renda_mensal": renda_mensal,
+            "faixa": faixa,
+            "desconto": desconto,
+            "aliquota": aliquota,
+            "ir_mensal": ir,
+            "status": status
+        }
+
+    elif renda_mensal <= 5000:
         faixa = "Até R$ 5.000"
         desconto = 100
         aliquota = 0
@@ -20,7 +26,6 @@ def calcular_ir(renda_mensal):
         faixa = "Até R$ 5.500"
         desconto = 75
         aliquota = 0.275
-
         ir_bruto = renda_mensal * aliquota
         ir = ir_bruto * (1 - desconto / 100)
 
@@ -28,7 +33,6 @@ def calcular_ir(renda_mensal):
         faixa = "Até R$ 6.000"
         desconto = 50
         aliquota = 0.275
-
         ir_bruto = renda_mensal * aliquota
         ir = ir_bruto * (1 - desconto / 100)
 
@@ -36,7 +40,6 @@ def calcular_ir(renda_mensal):
         faixa = "Até R$ 6.500"
         desconto = 25
         aliquota = 0.275
-
         ir_bruto = renda_mensal * aliquota
         ir = ir_bruto * (1 - desconto / 100)
 
@@ -44,7 +47,6 @@ def calcular_ir(renda_mensal):
         faixa = "Até R$ 7.350"
         desconto = 10
         aliquota = 0.275
-
         ir_bruto = renda_mensal * aliquota
         ir = ir_bruto * (1 - desconto / 100)
 
