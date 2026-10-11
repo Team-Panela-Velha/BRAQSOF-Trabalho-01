@@ -25,7 +25,7 @@ from exercicio2c import calcular_ir
     ],
 )
 
-def teste_calcular_ir_faixas(
+def test_calcular_ir_faixas(
     renda, faixa_esperada, desconto_esperado, ir_esperado
 ):
   
@@ -37,6 +37,15 @@ def teste_calcular_ir_faixas(
   assert resultado["faixa"] == faixa_esperada
   assert resultado["desconto"] == desconto_esperado
   assert resultado["aliquota"] == 0.275
+  assert resultado["status"] == "Válido"
 
   # Usamos pytest.approx para lidar com pequenas imprecisões de ponto flutuante
   assert resultado["ir_mensal"] == pytest.approx(ir_esperado, rel=1e-5)
+
+def test_calcular_ir_renda_negativa():
+    "Renda negativa deve retornar status Inválido."
+    resultado = calcular_ir(-100)
+
+    assert resultado["status"] == "Inválido"
+    assert resultado["faixa"] is None
+    assert resultado["ir_mensal"] == 0

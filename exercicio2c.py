@@ -64,4 +64,5 @@ def calcular_ir(renda_mensal):
         "status": status
     }
 
-print(calcular_ir(float(input("Digite a renda mensal: "))))
+if __name__ == "__main__":
+    print(calcular_ir(float(input("Digite a renda mensal: "))))
