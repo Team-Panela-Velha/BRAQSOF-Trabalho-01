@@ -19,7 +19,7 @@ def calcular_ir(renda_mensal):
     elif renda_mensal <= 5000:
         faixa = "Até R$ 5.000"
         desconto = 100
-        aliquota = 0
+        aliquota = 0.275
         ir = 0
 
     elif renda_mensal <= 5500:
